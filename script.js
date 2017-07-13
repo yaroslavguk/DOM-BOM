@@ -49,14 +49,16 @@
     namef = false;
   }
  
-  var c = /(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d/;
-  var datef = document.querySelector('input[name=date]').value;
-  var result3 = datef.match(c);
-  
-  if (datef.length === 0 || result3 === null){
-  alert('date should contain current date dd/mm/yyyy');
-  datef = false;
- }
+  var d = new Date();
+  var curr_date = d.getDate();
+  var curr_month = '0' + (d.getMonth()+1);
+  var curr_year = d.getFullYear();
+  var dateNow = curr_date + "/" + curr_month + "/" + curr_year;
+  var dateField = document.querySelector('input[name=date]').value;
+  if (dateField != dateNow ){
+    alert('date should contain current date dd/mm/yyyy');
+    dateField = false;
+  }
   return datef && namef && agef;
 }
   
